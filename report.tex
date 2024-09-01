@@ -63,7 +63,7 @@
   \newtheorem{remark}[theorem]{Remark}
 
 \title{CPSC-354 Report}
-\author{Your Name  \\ Chapman University}
+\author{Yoni Kazovsky  \\ Chapman University}
 
 \date{\today} 
 
@@ -72,7 +72,7 @@
 \maketitle
 
 \begin{abstract}
-(Delete and Replace:) You can safely delete and replace the explanations in this file as they will remain available on the course website. For example, you should replace this abstract with your own. The abstract should be a short summary of the report. It should be written in a way that makes it possible to understand the purpose of the report without reading it.  
+...
 \end{abstract}
 
 \setcounter{tocdepth}{3}
@@ -106,23 +106,81 @@ Do not change the template (fontsize, width of margin, spacing of lines, etc) wi
 
 \subsection{Week 1}
 
-(Delete:) Week 1 aligns with the first week of the semester. 
 
-If you think that the writing flows better if you merge the sections ``Notes'' and ``Homework'', you can do so, but keep the heading for ``Comments and Questions''.
 
 \subsubsection*{Notes}
 
-(Delete and Replace): You should use this section to write your own notes and showcase your own understanding.\footnote{Here are some hints. Why is this material included in the course? What are the big questions that motivate the study of this subject? How does this material connect to broader themes or issues in the field? What practical or theoretical problems can be addressed through an understanding of these topics? A great way to test whether you understand the material is to make your own exercises and answer them.} Material related to but going beyond what we do in class is welcome.
+In the reading about the mu puzzle, I learned about formal systems. The idea is that within the rules, you can reach the same desired outcome through different paths (at a given point you may have the option to apply several rules but can only chose one at any given step). In this context, a string which is created by applying one of the rules to the previous string is reffered to as a theorem. 
 
-Feel free to use your favourite LLM to help you build a mental landscape of the subject. Think of LLMs as an extension of Wikipedia and Google, a tool you should be using as introduction to any subject. If you didnt check with Google, Wikipedia and GPT, you are not ready to write your own notes. On the other hand, while using these resources is necessary, you need to always exercise your own critical thinking and you are always responsible for what you write. 
+I also learned about discrete mathematics proofs and look forward to learning about how they will be applied to the developement of a programing language.
 
 \subsubsection*{Homework}
 
-(Delete and Replace:) This section will typically contain Homework problems. You should write up your solutions in \LaTeX. You can use the \texttt{lstlisting} environment to include code. You can use \href{https://excalidraw.com/}{Excalidraw} for drawings. Pictures from handwritten drawings are acceptable if the drawings are of high quality (pictures from rough notes and quick sketches are likely to loose you points). 
+NNG Tutorial World Level 5:
 
-Make sure that this section can be read without referring back to the homework question. Introduce the question/problem and repeat it in your own words. Make sure to typset your homework in a way that makes it clear what  the question and what the answer is. Present it as a worked example would be presented in a textbook. 
+a+(b+0)+(c+0)=a+b+c.
 
-Also explain what you learn from the homework. Each homework was carefully drafted to bring home a particular teaching point. Make sure to explain what this point is. Relate it to the big questions mentioned above. 
+Solution: 
+
+First we use the Lean add zero proof to remove the 0 in b+0.
+
+Then we use the Lean add zero proof to remove the 0 in c+0.
+
+Finally we are left with a+b+c = a+b+c and we can use rfl to confirm our proof with reflexive property.
+
+...
+
+NNG Tutorial World Level 6:
+
+a+(b+0)+(c+0)=a+b+c.
+
+Solution: 
+
+First we use the Lean precision add zero proof (tarteting c) to remove the 0 in c+0.
+
+Then we use the Lean add zero proof to remove the remaining 0 in b+0.
+
+Finally we are left with a+b+c = a+b+c and we can use rfl to confirm our proof with reflexive property.
+
+...
+
+NNG Tutorial World Level 7:
+
+For all natural numbers a, we have succ(a)=a+1.
+
+Solution: 
+
+First we unwravel the one with the Lean rw proof to eliminate the one with a succ0.
+
+Then we use the Lean rw proof with add succ to change n + succ0 into succ(n+0).
+
+Then we use the rw proof to rewrite succ(n+0) into succ(n).
+
+Finally we are left with succ(n) = succ(n) and we can use rfl to confirm our proof with reflexive property.
+
+...
+
+NNG Tutorial World Level 8:
+
+For all natural numbers a, we have succ(a)=a+1.
+
+Solution: 
+
+For this problem I simplified both sides of the equation using the rewrite proof with succesors such as 3 = succ 2 and more.
+
+Eventually I got to this point: succ (succ 0) + succ (succ 0) = succ (succ (succ (succ 0)))
+
+At this point I began using rw add succ to simplify the left side of the equation
+
+Then I used rw add zero to remove a remaining zero and I was left with this: succ (succ (succ (succ 0))) = succ (succ (succ (succ 0)))
+
+At this point I used the rfl to confirm my proof reflexively.
+
+...
+
+In all of the above examples I used the Lean rfl proof which directly corresponds to the mathematical reflexive property which states that:
+any number a is equal to itself. In other words a = a or b+c = b+c, etc.
+
 
 %In case you want to draw automata in Latex, you can use the tikz %package. Here is an example of a simple automaton:
 %
@@ -142,15 +200,13 @@ Also explain what you learn from the homework. Each homework was carefully draft
 
 \subsubsection*{Comments and Questions}
 
-(Delete and Replace:) Here you should write your own critical reflection on the content of the week. If you can surprise me with something I have not seen before, you are on the right track.
+This section was a good refresh on some of the discrete mathematics concepts that I had forgotten over break. My question for this week is the following:
 
-%I expect you to read the lecture notes. 
+How are these mathematical concepts applied to the developement of programming languages?
 
-Ask at least one \textbf{interesting question}\footnote{It is important to learn to ask \emph{interesting} questions. There is no precise way of defining what is meant by interesting. You can only learn this by doing. An interesting question comes typically in two parts. Part 1 (one or two sentences) sets the scene. Part 2 (one or two sentences) asks the question. A good question strikes the right balance between being specific and technical on the one hand and open ended on the other hand. A question that can be answered with yes/no is not an interesing question.} on the lecture notes. Also post the question on the Discord channel so that everybody can see and discuss the questions.
 
 \subsection{Week 2}
 
-(Delete:) Week 2 (and all the other weeks) should follow the same pattern as Week 1. Even if there is a week without homework, notes and comments (see above) are still expected.
 
 \subsection{\ldots}
 
