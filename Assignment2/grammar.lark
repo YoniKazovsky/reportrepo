@@ -1,0 +1,21 @@
+start: expr
+
+?expr: expr "+" term   -> add
+     | expr "-" term   -> sub
+     | term
+
+?term: term "*" pow   -> mul
+     | term "/" pow   -> div
+     | pow
+
+?pow: atom "^" pow    -> exp
+     | atom
+
+?atom: "-" atom       -> neg
+     | "log" atom "base" atom -> log
+     | "(" expr ")"
+     | NUMBER
+
+%import common.NUMBER
+%import common.WS
+%ignore WS
