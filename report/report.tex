@@ -472,7 +472,7 @@ Exp2→Integer
 
 My question for this week is the following: How can this concept of parcing be applied to the developement of a programming language, specifically in the ways in which the backend handles order of operations regarding actual code as opposed to just calculations like we did in our calculators?
 
-\subsection{Week 4}
+\subsection{Week 5}
 
 
 
@@ -562,6 +562,103 @@ Mathematical Proof:
 \subsubsection*{Comments and Questions}
 
 How can lean logic proofs help us construct programming languages? What other mathematical concepts can be applied in the developement of a programming language?
+
+
+\subsection{Week 6}
+
+\subsubsection*{Notes}
+This week we learned about lamda calculus and different types of propositions. Proofs using these are slightly different that other proofs we have done. 
+
+\subsubsection*{Homework}
+Tutorial World: Party Invites
+
+Level 1:
+
+1. exact todo list
+
+...
+
+Level 2:
+
+1. exact and intro p s
+
+...
+
+Level 3:
+
+1. exact and intro (and intro a i) (and intro o u)
+
+... 
+
+Level 4:
+
+1. have p := and left vm
+
+2. exact p
+
+... 
+
+Level 5:
+
+1. have p := and right h
+
+2. exact p
+
+... 
+
+Level 6:
+
+1. have a := and left h1
+
+2. have u := and right h2
+
+3. exact and intro a u
+
+... 
+
+Level 7:
+
+1. have h := h.left
+
+2. have x := h.left
+
+3. have z := x.right
+
+4. have q := z.left
+
+5. have r := q.left
+
+6. have o := r.right
+
+7. exact o
+
+... 
+
+Level 8:
+
+1. have h1 := and left h
+
+2. have h2 := and right h
+
+3. have h3 := and left h1
+
+4. have a := and right h1
+
+5. have ps := and left h3
+
+6. have p := and right h2
+
+7. have r := and left p
+
+8. have rs := and left r
+
+9. have ss := and right h3
+
+10. exact and intro a (and intro rs (and intro ps ss))
+
+\section{Comments and Questions}
+
+My question for this week is how can some of the concepts we learned with different types of proofs be applied to lamda calculus proofs. And how can these lamda calculus proofs then be used in the developement of a programming language?
 
 \section{Lessons from the Assignments}
 
