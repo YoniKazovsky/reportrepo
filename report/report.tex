@@ -656,9 +656,160 @@ Level 8:
 
 10. exact and intro a (and intro rs (and intro ps ss))
 
-\section{Comments and Questions}
+\subsection*{Comments and Questions}
 
 My question for this week is how can some of the concepts we learned with different types of proofs be applied to lamda calculus proofs. And how can these lamda calculus proofs then be used in the developement of a programming language?
+
+\subsection{Week 7}
+
+\subsubsection*{Notes}
+In this week we dove deeper into lambda calculus
+
+\subsubsection*{Homework}
+
+
+\subsection*{Comments and Questions}
+
+
+\subsection{Week 8 and 9}
+
+\subsubsection*{Notes}
+In weeks 8 and 9 we worked on developing a lambda calculus interpreter. This taught me a lot about lambda calculus and how it is implemented in progrmaming languages.
+
+\subsubsection*{Homework}
+Excercises 2-8:
+
+2. Explain why a b c d reduces to (((a b) c) d) and why (a) reduces to a:
+
+In lambda calc. expressions such as a b c d are evaluated as nested applications because the function application is inheretly left-associative. In tha case of (a), parenthesis in lambda calculus are used for grouping 2 or more variables so since a is just one variable the parenthesis can be dropped leaving us with just a.
+
+3. How does capture avoiding substitution work? Investigate both by making relevant test cases and by looking at the source code. How is it implemented?
+
+Capture-avoiding substitution prevents accidental overlaps of variable names when replacing variables in an expression by renaming certain variables to keep them distinct. This process ensures that each variable keeps its intended meaning, even if it needs a new name to avoid conflicts during substitution. It is implemented by checking each variable before the substitution occurs
+
+4. Do you always get the expected result? Do all computations reduce to normal form?
+
+I got the expected result sometimes. Not all computations reduce to normal form because some lambda expressions can cause infinite loops.
+
+5. What is the smallest lambda expression you can find (minimal working example, MWE) that does not reduce to normal form?
+
+The smallest expresion that does not reduce to normal form is (lambdax.x x) (lambdax.x x)
+
+6. no question asked here
+
+7. How does the interpreter evaluate ((lambdam.lambdan. m n) (lambdaf.lambdax. f (f x))) (lambdaf.lambdax. f (f (f x)))? Do a calculation similarly to when you evaluated ((lambdam.lambdan. m n) (lambdaf.lambdax. f (f x))) (lambdaf.lambdax. f (f (f x))) for the homework, but now follow precisely the steps taken by interpreter.py
+
+Using the input:"((lambdam.lambdan. m n) (lambdaf.lambdax. f (f x))) (lambdaf.lambdax. f (f (f x)))"
+
+Substitute called: replacing m with (lambdaf.(lambdax.(f (f x)))) in (lambdan.(m n))
+
+Proceeding with substitution in lambda body for n
+
+Substitute called: replacing m with (lambdaf.(lambdax.(f (f x)))) in (m n)
+
+Substitute called: replacing m with (lambdaf.(lambdax.(f (f x)))) in m
+
+Substituting variable m with (lambdaf.(lambdax.(f (f x))))
+
+Substitute called: replacing m with (lambdaf.(lambdax.(f (f x)))) in n
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in ((lambdaf.(lambdax.(f (f x)))) n)
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in (lambdaf.(lambdax.(f (f x))))
+
+Proceeding with substitution in lambda body for f
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in (lambdax.(f (f x)))
+
+Proceeding with substitution in lambda body for x
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in (f (f x))
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in f
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in (f x)
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in f
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in x
+
+Substitute called: replacing n with (lambdaf.(lambdax.(f (f (f x))))) in n
+
+Substituting variable n with (lambdaf.(lambdax.(f (f (f x)))))
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in (lambdax.(f (f x)))
+
+Proceeding with substitution in lambda body for x
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in (f (f x))
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in f
+
+Substituting variable f with (lambdaf.(lambdax.(f (f (f x)))))
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in (f x)
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in f
+
+Substituting variable f with (lambdaf.(lambdax.(f (f (f x)))))
+
+Substitute called: replacing f with (lambdaf.(lambdax.(f (f (f x))))) in x
+(lambdax.((lambdaf.(lambdax.(f (f (f x))))) ((lambdaf.(lambdax.(f (f (f x))))) x)))
+
+8. Write out the trace of the interpreter in the format we used to picture the recursive trace of hanoi. Only write lines that contain calls to evaluate() or calls tosubstitute()[4]. Add the line numbers
+
+12: eval(('app', ('app', ('lam', 'm', ('lam', 'n', ('app', ('var', 'm'), ('var', 'n')))), ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x')))))), ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))))
+
+12: eval(('app', ('lam', 'm', ('lam', 'n', ('app', ('var', 'm'), ('var', 'n')))), ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x')))))))
+
+12: eval(('lam', 'm', ('lam', 'n', ('app', ('var', 'm'), ('var', 'n')))))
+
+51: Returning ('lam', 'm', ('lam', 'n', ('app', ('var', 'm'), ('var', 'n'))))
+
+39: substitute(('lam', 'n', ('app', ('var', 'm'), ('var', 'n'))), m, ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))
+
+60: substitute(('lam', 'n', ('app', ('var', 'm'), ('var', 'n'))), m, ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))
+
+60: substitute(('app', ('var', 'm'), ('var', 'n')), m, ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))
+
+60: substitute(('var', 'm'), m, ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))
+
+64: Returning ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x')))))
+
+60: substitute(('var', 'n'), m, ('lam', 'f', ('lam', 'x', ('app', ('var', 'f'), ('app', ('var', 'f'), ('var', 'x'))))))
+
+64: Returning ('var', 'n')
+
+\subsection*{Comments and Questions}
+Week 8: How can we use lambda calculus to perform tasks in different orders when managing a tasks in a programming language?
+
+Week 9: What implications does lambda calculus have on the functionality of programming languages? How is it implemented?
+
+
+\subsection{Week 10}
+
+\subsubsection*{Notes}
+Week 8 and 9 as well as assignment 3 where challening but very useful!
+
+\subsubsection*{Homework}
+Questions of Reflection from Assignment 3
+
+1) What did you find most challenging when working through Homework 8/9 and Assignment 3?
+
+The most challenging part was implementing capture-avoiding substitution in the interpreter, especially ensuring that variable renaming didn’t accidentally change the meaning of expressions. Tracking variable scopes and managing recursive evaluations required careful debugging and a solid understanding of lambda calculus mechanics, which was conceptually and technically demanding.
+
+2) How did you come up with the key insight for Assignment 3?
+
+The key insight came from breaking down each component of the interpreter into smaller, testable parts. By isolating the substitution mechanism and testing it with minimal expressions, I could see how substitutions worked in different cases. This modular approach helped me catch issues early on and better understand the flow of lambda expressions through the interpreter.
+
+3) What is your most interesting takeaway from Homework 8/9 and Assignment 3?
+
+The most interesting takeaway was realizing how lambda calculus can be used to simulate computation purely through function applications, without any inherent notion of numbers, operators, or other primitives. Building an interpreter from scratch gave me a deeper appreciation of how abstract computation principles can be directly implemented in code, connecting theory with practice in a very hands-on way
+
+\subsection*{Comments and Questions}
+
+What is the application of interpreters like this in real-world systems?
+
 
 \section{Lessons from the Assignments}
 
