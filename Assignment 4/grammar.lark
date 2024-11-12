@@ -1,0 +1,31 @@
+// grammar.lark
+
+// Define the main expression rule with precedence
+?start: exp
+
+?exp: term
+    | exp "+" term         -> plus
+    | exp "-" term         -> minus
+
+?term: factor
+     | term "*" factor     -> times
+
+?factor: atom
+       | "-" factor        -> neg
+
+?atom: atom_simple
+     | atom atom_simple    -> app  // Left-associative application
+
+?atom_simple: NAME         -> var
+    | NUMBER               -> num
+    | "\\" NAME "." exp    -> lam
+    | "(" exp ")"          -> group
+
+// Define lexical tokens
+NAME: /[a-z_][a-zA-Z0-9_]*/
+NUMBER: /\d+(\.\d+)?/
+
+// Comments (note change to // to avoid conflict with arithmetic)
+COMMENT: /\/\/[^\n]*/
+%ignore COMMENT
+%ignore " "
