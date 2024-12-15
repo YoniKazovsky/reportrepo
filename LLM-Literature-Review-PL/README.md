@@ -1,7 +1,7 @@
 # LLM Literature Review: Type Systems in Programming Languages  
 
 ## Author  
-**Your Name**  
+**Yoni Kazovsky**  
 
 ## Summary  
 This investigation explores the evolution of type systems in programming languages, their impact on software development, and the researchers who shaped the field.  
