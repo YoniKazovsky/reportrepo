@@ -96,7 +96,7 @@
 \maketitle
 
 \begin{abstract}
-This abstract is merely temporary, and will be updated upon completion of the report. This report will give an overview on the basic foundations of CPSC 354, Programming Languages. This includes notes, homework assignments, and exploration of course topics.
+This report provides an overview of key topics covered in CPSC 354: Programming Languages, including foundational concepts, weekly topics, and assignments. It explores mathematical reasoning, recursion, lambda calculus, parsing, and abstract rewriting systems (ARS), connecting these concepts to real-world applications in programming language design. Key assignments, such as implementing calculators, interpreters, and functional programming features, are discussed in detail, emphasizing the lessons learned and the integration of theory with practical coding. Through individual and group efforts, this report reflects the technical and conceptual growth achieved during the course.
 \end{abstract}
 
 \setcounter{tocdepth}{3}
@@ -104,7 +104,7 @@ This abstract is merely temporary, and will be updated upon completion of the re
 
 \section{Introduction}\label{intro}
 
-...
+Programming languages are the foundation of modern software development, enabling efficient problem-solving and computational reasoning. In CPSC 354, we explored theoretical and practical aspects of language design, ranging from lambda calculus and recursion to advanced parsing techniques and abstract rewriting systems. This report summarizes the weekly topics and assignments, highlighting how these concepts build a comprehensive understanding of programming-language principles. 
 
 \section{Week by Week}\label{homework}
 
@@ -1407,12 +1407,47 @@ What are the trade-offs in terms of readability, efficiency, and debugging when 
 
 \section{Lessons from the Assignments}
 
+Group work has been a central aspect of this course, complemented by individual assignments that deepened my understanding of programming concepts. This section reflects on the key takeaways from each assignment, highlighting the important lessons learned and their connections to the theoretical topics discussed in lectures.
+
+\subsection{Assignment 1: Calculator Implementation}
+The first assignment involved building a Python calculator to evaluate arithmetic expressions using operations like \texttt{+}, \texttt{*}, and \texttt{\^}. A major takeaway was understanding how to construct a tokenizer and abstract syntax tree (AST) from an input string. This process clarified the role of parsing in transforming human-readable input into a structured format suitable for evaluation. Implementing recursive methods for evaluating nested expressions emphasized the importance of base cases and careful handling of operator precedence. Additionally, this assignment taught me to anticipate edge cases, such as handling unmatched parentheses or malformed input. Working independently on this project solidified my confidence in problem-solving and logical implementation.
+
+\textbf{Key Lesson:} Parsing is a foundational skill in programming language design, and recursive structures are essential for building scalable solutions to evaluate complex expressions.
+
+\subsection{Assignment 2: Parser Using Lark}
+In the second assignment, we extended the calculator using Lark to generate a parser based on a context-free grammar (CFG). This project introduced the challenges of designing grammars to handle ambiguities, particularly ensuring unique parse trees for expressions with operators of varying precedence and associativity. Modifying the CFG required a deeper understanding of how grammar rules influence parse tree generation. Additionally, the process of transforming parse trees into evaluable ASTs reinforced the importance of connecting theory with implementation. Testing played a critical role, as even minor ambiguities in the CFG could lead to incorrect results or failures in edge cases.
+
+\textbf{Key Lesson:} Crafting grammars requires attention to both syntax and semantics, and rigorous testing is essential to ensure robustness in language parsers.
+
+\subsection{Assignment 3: Interpreter Implementation}
+This group project involved implementing an interpreter supporting lambda calculus and arithmetic operations. A critical takeaway was learning about evaluation strategies, particularly lazy evaluation, where expressions are not evaluated until absolutely necessary. This concept helped bridge theoretical topics, such as beta reduction in lambda calculus, with practical implementation. Another key lesson was the complexity of substitution and scoping, which required careful handling to avoid errors in nested function calls. Debugging these issues provided a deeper appreciation for the nuances of functional programming.
+
+While this was a group project, my primary contributions included writing evaluation rules for lambda expressions and resolving substitution-related issues.
+
+\textbf{Key Lesson:} Lazy evaluation and proper scoping are vital concepts in functional programming and interpreter design, underscoring the connection between theory and practice.
+
+\subsection{Assignment 4: Functional Language Design}
+The final project built on earlier assignments to create a small functional programming language with features like lists, recursion, and conditionals. The key takeaway was understanding the interplay between syntax and semantics in language design. Implementing features such as list constructors (\texttt{hd}, \texttt{tl}, \texttt{cons}) and recursive functions required careful integration of grammar rules with the interpreter's evaluation logic. Another important insight was the use of the fixed-point combinator (\texttt{fix}) to enable recursion, which tied back to theoretical discussions in lectures. This assignment also reinforced the importance of designing robust test cases to validate interactions between new features and existing functionality.
+
+In this group project, I contributed by implementing list operations and testing complex scenarios like nested conditionals and recursive functions.
+
+\textbf{Key Lesson:} Functional programming language design requires a comprehensive understanding of grammar, evaluation strategies, and theoretical constructs like fixed-point combinators.
+
+\subsection{Overview}
+These assignments collectively provided a strong foundation in programming language design and implementation. Through parsing, evaluation, and grammar construction, I developed a deeper understanding of theoretical concepts and their practical applications. Collaborative group work in assignments 3 and 4 further enhanced my problem-solving skills and emphasized the value of teamwork in tackling complex projects.
+
+
 
 \section{Conclusion}\label{conclusion}
 
+This course has provided an extremely valuable foundation in programming language design and implementation. Through the exploration of lambda calculus, recursion, parsing, and abstract rewriting systems, I developed a deeper understanding of both theoretical and practical aspects of programming languages. The assignments, ranging from individual calculator implementations to group-based functional language design, emphasized the importance of robust grammar construction, evaluation strategies, and debugging techniques. Group work, particularly in assignments 3 and 4, highlighted the collaborative nature of complex project development. Overall, the lessons learned in this course will continue to inform and enhance my approach to programming and software development.
 
 \begin{thebibliography}{99}
-\bibitem[BLA]{bla} Author, \href{https://en.wikipedia.org/wiki/LaTeX}{Title}, Publisher, Year.
+\bibitem [BEKH]{bekh} Gabriella Bekhrad - Received help from her with figuring out LaTeX and some of its packages for drawing mathematical diagrams and expressions.
+\bibitem [WEIN]{wein} Jonathan Weinberger - Course instructor
+\bibitem[HOF]{hof} Douglas Hofstadter, \emph{Gödel, Escher, Bach: An Eternal Golden Braid}, Vintage Books, 1980.
+\bibitem[LARK]{lark} Lark Parser Documentation, \href{https://github.com/lark-parser/lark}{https://github.com/lark-parser/lark}.
+\bibitem[KURZ]{kurz} Alexander Kurz, Course Materials for CPSC 354: Programming Languages, Chapman University, 2024.
 \end{thebibliography}
 
 \end{document}
